@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R&Cトランスポート｜宅配ドライバー急募</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1a4fa0;
+    --blue-light: #2d6fd4;
+    --blue-pale: #e8f0fb;
+    --white: #ffffff;
+    --off-white: #f7f9fc;
+    --text: #1a1f2e;
+    --text-mid: #4a5568;
+    --text-muted: #8a96aa;
+    --border: #dde4ef;
+    --accent: #0a82ff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--blue);
+    text-decoration: none;
+    letter-spacing: .02em;
+  }
+
+  nav { display: flex; gap: 28px; align-items: center; }
+
+  nav a {
+    font-size: .85rem;
+    color: var(--text-mid);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .2s;
+  }
+  nav a:hover { color: var(--blue); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    transition: background .2s !important;
+  }
+  .nav-cta:hover { background: var(--blue-light) !important; }
+
+  @media (max-width: 640px) {
+    nav { display: none; }
+    header { padding: 0 20px; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding-top: 64px;
+    background: var(--blue);
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,.12) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  .hero-circle {
+    position: absolute;
+    right: -120px;
+    bottom: -120px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.05);
+    pointer-events: none;
+  }
+  .hero-circle2 {
+    position: absolute;
+    right: 60px;
+    top: -180px;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.04);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    width: 100%;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.3);
+    color: var(--white);
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    animation: fadeUp .5s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #7fffb0;
+    border-radius: 50%;
+    animation: blink 1.4s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .2; }
+  }
+
+  .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    animation: fadeUp .5s .08s ease both;
+  }
+
+  .hero-title .jp {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+    opacity: .9;
+  }
+
+  .hero-desc {
+    color: rgba(255,255,255,.78);
+    font-size: 1rem;
+    max-width: 520px;
+    margin-bottom: 40px;
+    animation: fadeUp .5s .16s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    animation: fadeUp .5s .24s ease both;
+  }
+
+  .btn {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: .95rem;
+    font-weight: 700;
+    padding: 14px 34px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--blue);
+    box-shadow: 0 4px 20px rgba(0,0,0,.12);
+  }
+  .btn-white:hover { box-shadow: 0 8px 28px rgba(0,0,0,.18); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,.5);
+  }
+  .btn-ghost:hover { border-color: var(--white); }
+
+  /* ── URGENCY STRIP ── */
+  .urgency {
+    background: var(--accent);
+    color: var(--white);
+    text-align: center;
+    padding: 14px 24px;
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 80px 40px; }
+  .container { max-width: 1000px; margin: 0 auto; }
+
+  .sec-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .25em;
+    color: var(--blue-light);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .sec-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 900;
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+
+  .sec-lead {
+    color: var(--text-mid);
+    font-size: .95rem;
+    margin-bottom: 48px;
+  }
+
+  .line {
+    width: 36px;
+    height: 3px;
+    background: var(--blue);
+    margin-bottom: 40px;
+    border-radius: 2px;
+  }
+
+  /* ── INCOME ── */
+  .income-section { background: var(--off-white); }
+
+  .income-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .income-left { flex: 1; min-width: 200px; }
+
+  .income-eyebrow {
+    font-size: .78rem;
+    color: var(--text-muted);
+    letter-spacing: .12em;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .income-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--blue);
+    line-height: 1.1;
+  }
+
+  .income-num sub {
+    font-size: 1rem;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+
+  .income-note {
+    font-size: .8rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  .income-divider {
+    width: 1px;
+    height: 80px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  .income-right { flex: 2; min-width: 200px; }
+
+  .income-detail {
+    font-size: .9rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+  }
+
+  .income-detail strong { color: var(--text); font-weight: 700; }
+
+  /* ── DETAIL CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .card:hover { box-shadow: 0 8px 32px rgba(26,79,160,.08); transform: translateY(-3px); }
+
+  .card-icon { font-size: 1.6rem; margin-bottom: 14px; }
+
+  .card-label {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .card-value {
+    font-size: .97rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .card-value em {
+    font-style: normal;
+    color: var(--blue);
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--white); }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .service-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .service-card-head {
+    background: var(--blue);
+    padding: 28px 30px;
+    color: var(--white);
+  }
+
+  .service-card-head .num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: .72rem;
+    letter-spacing: .2em;
+    opacity: .6;
+    margin-bottom: 8px;
+  }
+
+  .service-card-head h3 { font-size: 1.15rem; font-weight: 700; }
+
+  .service-card-body { padding: 28px 30px; background: var(--white); }
+
+  .service-price-lg {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+
+  .service-price-lg small {
+    font-size: .85rem;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
+
+  .tag {
+    background: var(--blue-pale);
+    color: var(--blue);
+    font-size: .72rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: .04em;
+  }
+
+  .service-desc {
+    font-size: .88rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+  }
+
+  /* ── POINTS ── */
+  .points { background: var(--off-white); }
+
+  .point-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .point-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    transition: box-shadow .2s;
+  }
+  .point-row:hover { box-shadow: 0 4px 20px rgba(26,79,160,.07); }
+
+  .point-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--blue);
+    min-width: 36px;
+    line-height: 1;
+    padding-top: 4px;
+  }
+
+  .point-body { flex: 1; }
+
+  .point-title { font-weight: 700; font-size: 1rem; margin-bottom: 5px; }
+
+  .point-desc { font-size: .87rem; color: var(--text-mid); line-height: 1.7; }
+
+  /* ── OFFICE ── */
+  .office { background: var(--white); }
+
+  .office-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  @media (max-width: 680px) {
+    .office-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  .office-map-box {
+    background: var(--blue-pale);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--blue);
+  }
+
+  .office-map-box .map-icon { font-size: 2.4rem; }
+  .office-map-box .map-addr { font-weight: 700; font-size: 1rem; text-align: center; line-height: 1.6; }
+  .office-map-box .map-sub { font-size: .8rem; color: var(--text-muted); }
+
+  .info-table { width: 100%; border-collapse: collapse; }
+
+  .info-table tr { border-bottom: 1px solid var(--border); }
+  .info-table tr:last-child { border-bottom: none; }
+
+  .info-table th {
+    text-align: left;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: var(--text-muted);
+    padding: 14px 16px 14px 0;
+    white-space: nowrap;
+    width: 90px;
+    vertical-align: top;
+  }
+
+  .info-table td {
+    font-size: .9rem;
+    color: var(--text);
+    padding: 14px 0;
+    line-height: 1.7;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--blue);
+    padding: 80px 40px;
+    text-align: center;
+  }
+
+  .contact-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .contact-section p {
+    color: rgba(255,255,255,.75);
+    font-size: .95rem;
+    margin-bottom: 36px;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 44px;
+    border-radius: 6px;
+    text-decoration: none;
+    box-shadow: 0 4px 24px rgba(0,0,0,.15);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.22); }
+
+  footer {
+    background: #0e1a2e;
+    color: rgba(255,255,255,.4);
+    text-align: center;
+    font-size: .78rem;
+    padding: 28px 24px;
+    letter-spacing: .06em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .55s ease, transform .55s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    section { padding: 60px 20px; }
+    .contact-section { padding: 60px 20px; }
+    .income-card { flex-direction: column; gap: 24px; }
+    .income-divider { width: 100%; height: 1px; }
+  }
+
+  /* ── CAR IMAGE ── */
+  .car-section { background: var(--off-white); padding: 0; }
+  .car-img-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+  .car-img-wrap img {
+    width: 100%;
+    max-width: 560px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(26,86,219,.12);
+    display: block;
+    margin: 0 auto;
+  }
+  .car-img-caption {
+    text-align: center;
+    margin-top: 14px;
+    font-size: .82rem;
+    color: var(--text-sub);
+  }
+
+  /* ── APPLY SECTION ── */
+  .apply-section { background: var(--off-white); }
+
+  .apply-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 640px) {
+    .apply-steps { grid-template-columns: 1fr; }
+  }
+
+  .apply-step {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    position: relative;
+  }
+
+  .apply-step-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .2em;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+
+  .apply-step-icon { font-size: 1.8rem; margin-bottom: 10px; }
+
+  .apply-step-title {
+    font-size: .95rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .apply-step-desc {
+    font-size: .8rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  .line-cta-box {
+    background: var(--white);
+    border: 2px solid #06C755;
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .line-cta-box h3 {
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .line-cta-box p {
+    font-size: .88rem;
+    color: var(--text-mid);
+    margin-bottom: 24px;
+    line-height: 1.7;
+  }
+
+  .btn-line-lg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #06C755;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 16px 0;
+    border-radius: 8px;
+    text-decoration: none;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 4px 20px rgba(6,199,85,.3);
+    transition: background .2s, transform .15s, box-shadow .15s;
+  }
+  .btn-line-lg:hover {
+    background: #05b54d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(6,199,85,.4);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">R&amp;C Transport</a>
+  <nav>
+    <a href="#recruit">求人情報</a>
+    <a href="#service">サービス</a>
+    <a href="#office">事務所</a>
+    <a href="#contact" class="nav-cta">応募する</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-circle2"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">宅配案件 急募中</div>
+    <h1 class="hero-title">
+      <span class="jp">R&amp;Cトランスポート</span>
+      ドライバー、<br>募集しています。
+    </h1>
+    <p class="hero-desc">業務委託・未経験可。自分のペースで働ける宅配のお仕事です。<br>車両リース・給油カード貸出など、スタートを全力サポートします。</p>
+    <div class="hero-btns">
+      <a href="#recruit" class="btn btn-white">求人詳細を見る</a>
+      <a href="#contact" class="btn btn-ghost">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<!-- URGENCY -->
+<div class="urgency">🚚 宅配案件 急募 ── 業務委託 ／ 未経験可 ／ 週1日〜OK</div>
+
+<!-- RECRUIT -->
+<section class="income-section" id="recruit">
+  <div class="container">
+    <p class="sec-label reveal">Recruitment</p>
+    <h2 class="sec-title reveal">求人情報</h2>
+    <div class="line reveal"></div>
+
+    <div class="income-card reveal">
+      <div class="income-left">
+        <div class="income-eyebrow">月間売上目安</div>
+        <div class="income-num">¥40<sub>万〜</sub><br>¥70<sub>万以上</sub></div>
+        <div class="income-note">出来高制 ／ 単価163円（税別）<br>※各種手数料控除後の単価</div>
+      </div>
+      <div class="income-divider"></div>
+      <div class="income-right">
+        <div class="income-detail">
+          <strong>仕事内容</strong>　大手運送会社での宅配業務（配達・集荷）<br>
+          <strong>稼働時間</strong>　7:00〜21:00の間で柔軟に調整可能<br>
+          <strong>稼働日数</strong>　週1日〜週6日（応相談）<br>
+          <strong>契約形態</strong>　業務委託<br>
+          <strong>応募資格</strong>　未経験者歓迎・普通自動車免許（AT可）
+        </div>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="card reveal">
+        <div class="card-icon">📦</div>
+        <div class="card-label">仕事内容</div>
+        <div class="card-value">大手運送会社での<em>宅配業務</em><br>配達・集荷</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🕐</div>
+        <div class="card-label">勤務時間</div>
+        <div class="card-value"><em>7:00〜21:00</em>の間<br>週1〜6日で相談可</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">📍</div>
+        <div class="card-label">勤務地</div>
+        <div class="card-value">営業所（<em>鶴見区</em>）<br>配送エリア：四条畷市周辺</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">💼</div>
+        <div class="card-label">契約形態</div>
+        <div class="card-value"><em>業務委託</em><br>未経験者歓迎</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE -->
+<section class="services" id="service">
+  <div class="container">
+    <p class="sec-label reveal">Services</p>
+    <h2 class="sec-title reveal">サポートサービス</h2>
+    <p class="sec-lead reveal">はじめての方でも安心してスタートできる環境を整えています。</p>
+
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <div class="service-card-head">
+          <div class="num">SERVICE 01</div>
+          <h3>🚗 車両リース</h3>
+        </div>
+        <div class="service-card-body">
+          <div class="service-price-lg">¥35,000<small> ／ 月（税別）</small></div>
+          <div class="tags">
+            <span class="tag">車両保険 込み</span>
+            <span class="tag">メンテナンス 込み</span>
+          </div>
+          <p class="service-desc">車をお持ちでない方でも即スタート可能。保険・メンテナンス費用がすべて含まれているので、余計な出費なく安心して業務に集中できます。</p>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-card-head">
+          <div class="num">SERVICE 02</div>
+          <h3>⛽ 給油カード貸出</h3>
+        </div>
+        <div class="service-card-body">
+          <div class="service-price-lg">貸出制度<small> あり</small></div>
+          <div class="tags">
+            <span class="tag">キャッシュレス給油</span>
+            <span class="tag">立替不要</span>
+          </div>
+          <p class="service-desc">燃料費の立替払いが不要。給油カードをお貸しするので、手元の資金を気にせず業務に集中していただけます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POINTS -->
+<section class="points" id="points">
+  <div class="container">
+    <p class="sec-label reveal">Why R&C?</p>
+    <h2 class="sec-title reveal">選ばれる理由</h2>
+    <div class="line reveal"></div>
+
+    <div class="point-list">
+      <div class="point-row reveal">
+        <div class="point-num">01</div>
+        <div class="point-body">
+          <div class="point-title">未経験からスタートできる</div>
+          <div class="point-desc">物流・配送の経験がない方も大歓迎。しっかりサポートするので、安心してご応募ください。</div>
+        </div>
+      </div>
+      <div class="point-row reveal">
+        <div class="point-num">02</div>
+        <div class="point-body">
+          <div class="point-title">自分のペースで働ける</div>
+          <div class="point-desc">週1日〜週6日まで、稼働日数を柔軟に調整できます。副業・Wワークとして働く方も多数在籍中です。</div>
+        </div>
+      </div>
+      <div class="point-row reveal">
+        <div class="point-num">03</div>
+        <div class="point-body">
+          <div class="point-title">充実した車両・燃料サポート</div>
+          <div class="point-desc">車両リース（保険・メンテ込）と給油カード貸出で、初期費用を抑えてすぐに始められます。</div>
+        </div>
+      </div>
+      <div class="point-row reveal">
+        <div class="point-num">04</div>
+        <div class="point-body">
+          <div class="point-title">がんばった分だけ稼げる</div>
+          <div class="point-desc">出来高制なので、働けば働くほど収入に直結。月70万円以上の実績者も在籍しています。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICE -->
+<section class="office" id="office">
+  <div class="container">
+    <p class="sec-label reveal">Office</p>
+    <h2 class="sec-title reveal">事務所案内</h2>
+    <div class="line reveal"></div>
+
+    <div class="office-grid">
+      <div class="reveal">
+        <div class="office-map-box">
+          <div class="map-icon">📌</div>
+          <div class="map-addr">東大阪市角田1-5-3</div>
+          <div class="map-sub">R&amp;Cトランスポート</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <table class="info-table">
+          <tr><th>所在地</th><td>東大阪市角田1-5-3</td></tr>
+          <tr><th>業務エリア</th><td>鶴見区営業所〜四条畷市（配送エリア）</td></tr>
+          <tr><th>契約形態</th><td>業務委託 ／ 未経験可</td></tr>
+          <tr><th>稼働時間</th><td>7:00〜21:00（週1〜6日応相談）</td></tr>
+          <tr><th>単価</th><td>163円 / 個（税別・各種手数料控除後）</td></tr>
+          <tr><th>売上目安</th><td>月40万円〜70万円以上（出来高制）</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section class="apply-section" id="contact">
+  <div class="container">
+    <p class="sec-label reveal">How to Apply</p>
+    <h2 class="sec-title reveal">応募方法</h2>
+    <div class="line reveal"></div>
+
+    <div class="apply-steps">
+      <div class="apply-step reveal">
+        <div class="apply-step-num">STEP 01</div>
+        <div class="apply-step-icon">💬</div>
+        <div class="apply-step-title">LINEで友だち追加</div>
+        <div class="apply-step-desc">下のボタンから公式LINEを友だち追加してください。</div>
+      </div>
+      <div class="apply-step reveal">
+        <div class="apply-step-num">STEP 02</div>
+        <div class="apply-step-icon">📝</div>
+        <div class="apply-step-title">メッセージを送る</div>
+        <div class="apply-step-desc">「応募希望」とメッセージを送るだけでOK。お気軽にどうぞ。</div>
+      </div>
+      <div class="apply-step reveal">
+        <div class="apply-step-num">STEP 03</div>
+        <div class="apply-step-icon">🤝</div>
+        <div class="apply-step-title">面談・スタート</div>
+        <div class="apply-step-desc">簡単な面談後、最短即日から稼働スタートできます。</div>
+      </div>
+    </div>
+
+    <div class="line-cta-box reveal">
+      <h3>📲 LINEで簡単応募</h3>
+      <p>質問だけでも大歓迎！<br>未経験・副業・Wワークの方もお気軽にご連絡ください。</p>
+      <a href="https://lin.ee/rMIi9yT" target="_blank" rel="noopener" class="btn-line-lg">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.037 2 11.01c0 4.49 3.385 8.232 7.969 8.89.31.068.733.207.84.476.096.244.063.626.031.872l-.136.84c-.041.244-.19.956.838.521 1.028-.435 5.548-3.27 7.572-5.6C20.532 15.28 22 13.27 22 11.01 22 6.037 17.523 2 12 2z"/>
+        </svg>
+        LINE公式アカウントで応募する
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="container">
+    <h2 class="reveal">お気軽にお問い合わせください</h2>
+    <p class="reveal">未経験の方・副業をお考えの方も大歓迎です。</p>
+    <a href="https://lin.ee/rMIi9yT" target="_blank" rel="noopener" class="contact-btn reveal">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#06C755" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.477 2 2 6.037 2 11.01c0 4.49 3.385 8.232 7.969 8.89.31.068.733.207.84.476.096.244.063.626.031.872l-.136.84c-.041.244-.19.956.838.521 1.028-.435 5.548-3.27 7.572-5.6C20.532 15.28 22 13.27 22 11.01 22 6.037 17.523 2 12 2z"/>
+      </svg>
+      LINEで問い合わせ・応募する
+    </a>
+  </div>
+</section>
+
+<footer>© 2026 R&amp;Cトランスポート ／ 東大阪市角田1-5-3　｜　<a href="https://lin.ee/rMIi9yT" target="_blank" rel="noopener" style="color:#06C755;text-decoration:none;font-weight:700;">LINE公式</a></footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 50);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
