@@ -682,6 +682,105 @@
     margin-top: 4px;
     letter-spacing: .1em;
   }
+
+  /* ── JOB CASES ── */
+  .jobs-section { background: var(--white); }
+
+  .jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .job-card {
+    background: var(--sand);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .job-card:hover {
+    box-shadow: 0 8px 32px rgba(30,30,60,.12);
+    transform: translateY(-4px);
+  }
+
+  .job-card-head {
+    background: var(--navy);
+    padding: 20px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .job-card-head::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 90% 50%, rgba(180,150,120,.15) 0%, transparent 70%);
+  }
+
+  .job-card-tag {
+    display: inline-block;
+    background: var(--craft);
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .job-card-title {
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--sand);
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+  }
+
+  .job-card-body {
+    padding: 20px 24px;
+  }
+
+  .job-row {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: .86rem;
+    align-items: flex-start;
+  }
+  .job-row:last-child { border-bottom: none; }
+
+  .job-key {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: var(--text-sub);
+    min-width: 72px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .job-val {
+    color: var(--text);
+    line-height: 1.65;
+    flex: 1;
+  }
+  .job-val strong { color: var(--navy); }
+
+  .job-note {
+    margin-top: 14px;
+    background: var(--craft-light);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: .78rem;
+    color: var(--text-sub);
+    line-height: 1.7;
+  }
+
 </style>
 </head>
 <body>
@@ -694,6 +793,7 @@
   </a>
   <nav>
     <a href="#recruit">求人情報</a>
+    <a href="#jobs">案件一覧</a>
     <a href="#service">サービス</a>
     <a href="#office">事務所</a>
     <a href="https://lin.ee/rMIi9yT" target="_blank" rel="noopener" class="nav-line">
@@ -965,6 +1065,140 @@
           <tr><td>売上目安</td><td>月40万円〜70万円以上</td></tr>
         </table>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOBS -->
+<section class="jobs-section" id="jobs">
+  <div class="container">
+    <p class="sec-label reveal">Job Cases</p>
+    <h2 class="sec-title reveal">その他の案件</h2>
+    <div class="sec-line reveal"></div>
+
+    <div class="jobs-grid">
+
+      <!-- 企業配 -->
+      <div class="job-card reveal">
+        <div class="job-card-head">
+          <div class="job-card-tag">定期案件</div>
+          <div class="job-card-title">企業配 定期案件①<br>大阪市中央区</div>
+        </div>
+        <div class="job-card-body">
+          <div class="job-row">
+            <div class="job-key">業務内容</div>
+            <div class="job-val">企業向け配送（企業配）</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">報酬</div>
+            <div class="job-val"><strong>15,000円 / 日</strong>（税別）</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">稼働時間</div>
+            <div class="job-val">9:00 〜 18:00頃</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">休日</div>
+            <div class="job-val">日曜日・祝日</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">出発地</div>
+            <div class="job-val">大阪市中央区</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">配送エリア</div>
+            <div class="job-val">大阪市中央区内</div>
+          </div>
+          <div class="job-note">企業配送のため不在が少なく効率的。配送エリアも中央区内のため走行距離を抑えて稼働できます。安定して長期稼働できる方歓迎。</div>
+        </div>
+      </div>
+
+      <!-- オカケン① -->
+      <div class="job-card reveal">
+        <div class="job-card-head">
+          <div class="job-card-tag">定期案件</div>
+          <div class="job-card-title">オカケン様 定期配送案件①<br>伊丹・宝塚コース</div>
+        </div>
+        <div class="job-card-body">
+          <div class="job-row">
+            <div class="job-key">勤務曜日</div>
+            <div class="job-val">月曜日〜土曜日</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">車両</div>
+            <div class="job-val">幌車</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">報酬</div>
+            <div class="job-val"><strong>月〜金：13,000円 / 日</strong>（税抜）<br>土曜日：11,000円 / 日（税抜）</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">研修費</div>
+            <div class="job-val">半日：3,000円 ／ 1日：8,000円</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">業務内容</div>
+            <div class="job-val">ピストン配送あり・端末操作あり</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">積み地</div>
+            <div class="job-val">兵庫県尼崎市</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">勤務時間</div>
+            <div class="job-val">6:00 〜 17:00予定</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">配送エリア</div>
+            <div class="job-val">伊丹コース・宝塚コース</div>
+          </div>
+          <div class="job-note">定期案件のため安定して稼働できるお仕事です。配送経験者歓迎。</div>
+        </div>
+      </div>
+
+      <!-- オカケン② -->
+      <div class="job-card reveal">
+        <div class="job-card-head">
+          <div class="job-card-tag">定期案件</div>
+          <div class="job-card-title">オカケン様 定期配送案件②<br>伊丹・宝塚コース</div>
+        </div>
+        <div class="job-card-body">
+          <div class="job-row">
+            <div class="job-key">勤務曜日</div>
+            <div class="job-val">月曜日〜土曜日</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">車両</div>
+            <div class="job-val">幌車</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">報酬</div>
+            <div class="job-val"><strong>月〜金：13,000円 / 日</strong>（税抜）<br>土曜日：11,000円 / 日（税抜）</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">研修費</div>
+            <div class="job-val">半日：3,000円 ／ 1日：8,000円</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">業務内容</div>
+            <div class="job-val">ピストン配送あり・端末操作あり</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">積み地</div>
+            <div class="job-val">兵庫県尼崎市</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">勤務時間</div>
+            <div class="job-val">6:00 〜 17:00予定</div>
+          </div>
+          <div class="job-row">
+            <div class="job-key">配送エリア</div>
+            <div class="job-val">伊丹コース・宝塚コース</div>
+          </div>
+          <div class="job-note">定期案件のため安定して稼働できるお仕事です。配送経験者歓迎。</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
