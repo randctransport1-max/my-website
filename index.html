@@ -781,6 +781,82 @@
     line-height: 1.7;
   }
 
+
+  /* ── PAYMENT SCHEDULE ── */
+  .schedule-section { background: var(--sand-mid); }
+  .schedule-section .sec-title { color: var(--navy); }
+
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 680px) { .schedule-grid { grid-template-columns: 1fr; } }
+
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(30,30,60,.08);
+  }
+  .schedule-table th {
+    background: var(--navy);
+    color: var(--sand);
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    padding: 12px 14px;
+    text-align: left;
+  }
+  .schedule-table td {
+    background: var(--white);
+    padding: 11px 14px;
+    font-size: .85rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .schedule-table tr:last-child td { border-bottom: none; }
+  .schedule-table tr:nth-child(even) td { background: var(--sand); }
+
+  .pay-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: .78rem;
+    font-weight: 700;
+  }
+  .pay-badge.green { background: #d1fae5; color: #065f46; }
+  .pay-badge.red   { background: #fee2e2; color: #991b1b; }
+
+  .schedule-note {
+    background: var(--white);
+    border-left: 4px solid var(--craft);
+    border-radius: 0 12px 12px 0;
+    padding: 18px 20px;
+    font-size: .85rem;
+    color: var(--text-sub);
+    line-height: 1.8;
+  }
+  .schedule-note strong { color: var(--navy); display: block; margin-bottom: 6px; }
+
+  .cycle-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy);
+    color: var(--sand);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: .85rem;
+    letter-spacing: .08em;
+    padding: 10px 20px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .cycle-badge span { color: var(--craft); }
+
 </style>
 </head>
 <body>
@@ -794,6 +870,8 @@
   <nav>
     <a href="#recruit">求人情報</a>
     <a href="#jobs">案件一覧</a>
+    <a href="recruit.html">求人詳細</a>
+    <a href="business.html">企業配達</a>
     <a href="#service">サービス</a>
     <a href="#office">事務所</a>
     <a href="https://lin.ee/rMIi9yT" target="_blank" rel="noopener" class="nav-line">
@@ -1199,6 +1277,63 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule-section" id="schedule">
+  <div class="container">
+    <p class="sec-label reveal">Payment Schedule</p>
+    <h2 class="sec-title reveal">支払いサイクル</h2>
+    <div class="sec-line reveal"></div>
+
+    <div class="reveal" style="margin-bottom:24px;">
+      <div class="cycle-badge">支払いサイクル ／ <span>末締め・翌々月末払い</span></div>
+    </div>
+
+    <div class="schedule-grid reveal">
+      <!-- 前半 -->
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>対象月（稼働期）</th>
+            <th>締め日</th>
+            <th>支払日（翌々月末）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1月度分</td><td>1月31日</td><td><span class="pay-badge green">3月31日</span></td></tr>
+          <tr><td>2月度分</td><td>2月末日</td><td><span class="pay-badge green">4月30日</span></td></tr>
+          <tr><td>3月度分</td><td>3月31日</td><td><span class="pay-badge green">5月31日</span></td></tr>
+          <tr><td>4月度分</td><td>4月30日</td><td><span class="pay-badge green">6月30日</span></td></tr>
+          <tr><td>5月度分</td><td>5月31日</td><td><span class="pay-badge green">7月31日</span></td></tr>
+          <tr><td>6月度分</td><td>6月30日</td><td><span class="pay-badge green">8月31日</span></td></tr>
+        </tbody>
+      </table>
+      <!-- 後半 -->
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>対象月（稼働期）</th>
+            <th>締め日</th>
+            <th>支払日（翌々月末）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>7月度分</td><td>7月31日</td><td><span class="pay-badge green">9月30日</span></td></tr>
+          <tr><td>8月度分</td><td>8月31日</td><td><span class="pay-badge green">10月31日</span></td></tr>
+          <tr><td>9月度分</td><td>9月30日</td><td><span class="pay-badge green">11月30日</span></td></tr>
+          <tr><td>10月度分</td><td>10月31日</td><td><span class="pay-badge green">12月31日</span></td></tr>
+          <tr><td>11月度分</td><td>11月30日</td><td><span class="pay-badge red">翌年 1月31日</span></td></tr>
+          <tr><td>12月度分</td><td>12月31日</td><td><span class="pay-badge red">翌年 2月末日</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="schedule-note reveal">
+      <strong>【土日祝日の取り扱いと年末調整について】</strong>
+      翌々月末日が銀行休業日（土日・祝日）の場合、基本的には「直前の営業日（繰り上げ）」に振り込まれるケースが一般的です。特に、10月稼働分（12月31日払い）は年末にあたるため、多くの企業で通常よりも繰り上げて前営業日に支給されます。
     </div>
   </div>
 </section>
