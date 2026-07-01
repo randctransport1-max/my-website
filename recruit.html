@@ -97,6 +97,112 @@
 
   
 
+
+  /* ── DAY FLOW REDESIGN ── */
+  .dayflow-section { background: var(--navy); padding: 70px 40px; }
+  .dayflow-section .sec-label { color: var(--craft); }
+  .dayflow-section .sec-title { color: var(--sand); }
+  .dayflow-section .sec-line { background: var(--craft); }
+
+  .tl-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .tl-card {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0;
+    background: rgba(255,255,255,.06);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(180,150,120,.2);
+  }
+
+  .tl-card.highlight {
+    background: rgba(180,150,120,.15);
+    border-color: var(--craft);
+  }
+
+  .tl-card-time {
+    background: rgba(0,0,0,.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--craft);
+    line-height: 1.4;
+    border-right: 1px solid rgba(180,150,120,.2);
+  }
+
+  .tl-card.highlight .tl-card-time {
+    background: rgba(180,150,120,.2);
+  }
+
+  .tl-card-body {
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .tl-card-title {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--sand);
+    line-height: 1.4;
+  }
+
+  .tl-card-desc {
+    font-size: .78rem;
+    color: rgba(245,240,232,.55);
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  .tl-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .tl-summary-card {
+    background: rgba(180,150,120,.12);
+    border: 1px solid rgba(180,150,120,.3);
+    border-radius: 12px;
+    padding: 18px 12px;
+    text-align: center;
+  }
+
+  .tl-summary-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--craft);
+    line-height: 1;
+  }
+
+  .tl-summary-label {
+    font-size: .72rem;
+    color: rgba(245,240,232,.5);
+    margin-top: 6px;
+    letter-spacing: .05em;
+  }
+
+  @media (max-width: 640px) {
+    .tl-card { grid-template-columns: 80px 1fr; }
+    .tl-card-time { font-size: .72rem; padding: 12px 6px; }
+    .tl-summary-num { font-size: 1.3rem; }
+    .dayflow-section { padding: 50px 20px; }
+  }
+
 </style>
 </head>
 <body>
@@ -265,16 +371,16 @@
       </div>
     </div>
 
-    <div class="tl-summary reveal">
-      <div class="tl-summary-item">
+    <div class="tl-summary-grid reveal">
+      <div class="tl-summary-card">
         <div class="tl-summary-num">140<span style="font-size:1rem;">件</span></div>
         <div class="tl-summary-label">1日の配達合計</div>
       </div>
-      <div class="tl-summary-item">
+      <div class="tl-summary-card">
         <div class="tl-summary-num">70<span style="font-size:1rem;">km</span></div>
         <div class="tl-summary-label">走行距離（前後）</div>
       </div>
-      <div class="tl-summary-item">
+      <div class="tl-summary-card">
         <div class="tl-summary-num">約13<span style="font-size:1rem;">h</span></div>
         <div class="tl-summary-label">稼働時間目安</div>
       </div>
