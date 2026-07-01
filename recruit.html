@@ -67,6 +67,45 @@
   footer{background:#14142a;padding:24px 40px;text-align:center;font-size:.78rem;color:rgba(245,240,232,.4);border-top:1px solid rgba(180,150,120,.2);}
   footer a{color:#06C755;text-decoration:none;font-weight:700;}
   @media(max-width:640px){section{padding:50px 20px;}header{padding:0 20px;}nav{display:none;}}
+
+  /* ── HAMBURGER MENU ── */
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 200;
+  }
+  .burger span { display: block; width: 24px; height: 2px; background: var(--sand); border-radius: 2px; transition: all .3s ease; }
+  .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .burger.open span:nth-child(2) { opacity: 0; }
+  .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu {
+    display: none; position: fixed; top: 64px; left: 0; right: 0;
+    background: rgba(20,20,50,.98); backdrop-filter: blur(16px);
+    z-index: 99; padding: 20px 0 32px;
+    border-bottom: 2px solid var(--craft); flex-direction: column;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { display: block; padding: 14px 32px; font-size: 1rem; font-weight: 600; color: rgba(245,240,232,.8); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.05); transition: color .2s, background .2s; }
+  .mobile-menu a:hover { color: var(--craft); background: rgba(180,150,120,.05); }
+  .mobile-menu .mobile-line { margin: 16px 32px 0; background: #06C755; color: #fff; border-bottom: none; border-radius: 8px; text-align: center; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; }
+  .mobile-menu .mobile-line:hover { background: #05b54d; }
+  @media (max-width: 640px) { nav { display: none; } .burger { display: flex; } }
+
+
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;z-index:200;}
+  .burger span{display:block;width:24px;height:2px;background:#f5f0e8;border-radius:2px;transition:all .3s;}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(20,20,50,.98);backdrop-filter:blur(16px);z-index:99;padding:20px 0 32px;border-bottom:2px solid #b49678;flex-direction:column;}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{display:block;padding:14px 32px;font-size:1rem;font-weight:600;color:rgba(245,240,232,.8);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.05);transition:color .2s;}
+  .mobile-menu a:hover{color:#b49678;}
+  .mobile-menu .mobile-line{margin:16px 32px 0;background:#06C755;color:#fff;border-bottom:none;border-radius:8px;text-align:center;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 32px;}
+  @media(max-width:640px){nav{display:none!important;}.burger{display:flex!important;}}
 </style>
 </head>
 <body>
@@ -84,7 +123,32 @@
       LINE応募
     </a>
   </nav>
+  <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()">🏠 TOP</a>
+  <a href="recruit.html" onclick="closeMenu()">📄 求人情報</a>
+  <a href="business.html" onclick="closeMenu()">🏢 企業配達</a>
+  <a href="index.html#results" onclick="closeMenu()">📊 宅配実績</a>
+  <a href="index.html#recruit" onclick="closeMenu()">📦 宅配案件</a>
+  <a href="index.html#jobs" onclick="closeMenu()">📋 案件一覧</a>
+  <a href="index.html#office" onclick="closeMenu()">📍 事務所</a>
+  <a href="https://lin.ee/rMIi9yT" target="_blank" class="mobile-line" onclick="closeMenu()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.037 2 11.01c0 4.49 3.385 8.232 7.969 8.89.31.068.733.207.84.476.096.244.063.626.031.872l-.136.84c-.041.244-.19.956.838.521 1.028-.435 5.548-3.27 7.572-5.6C20.532 15.28 22 13.27 22 11.01 22 6.037 17.523 2 12 2z"/></svg>
+    LINEで応募・お問い合わせ
+  </a>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()">🏠 TOP</a>
+  <a href="recruit.html" onclick="closeMenu()">📄 求人情報</a>
+  <a href="business.html" onclick="closeMenu()">🏢 企業配達</a>
+  <a href="#" onclick="closeMenu()">📊 宅配実績</a>
+  <a href="https://lin.ee/rMIi9yT" target="_blank" class="mobile-line" onclick="closeMenu()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.037 2 11.01c0 4.49 3.385 8.232 7.969 8.89.31.068.733.207.84.476.096.244.063.626.031.872l-.136.84c-.041.244-.19.956.838.521 1.028-.435 5.548-3.27 7.572-5.6C20.532 15.28 22 13.27 22 11.01 22 6.037 17.523 2 12 2z"/></svg>
+    LINEで応募・お問い合わせ
+  </a>
+</div>
 
 <div class="page-hero">
   <div class="page-hero-label">RECRUITMENT</div>
@@ -176,4 +240,21 @@
 </section>
 
 <footer><p>© 2026 R&amp;Cトランスポート ／ 東大阪市角田1-5-3　｜　<a href="https://lin.ee/rMIi9yT" target="_blank">LINE公式アカウント</a></p></footer>
+<script>
+  function toggleMenu() {
+    document.getElementById('burger').classList.toggle('open');
+    document.getElementById('mobileMenu').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMenu() {
+    document.getElementById('burger').classList.remove('open');
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+
+<script>
+function toggleMenu(){document.getElementById('burger').classList.toggle('open');document.getElementById('mobileMenu').classList.toggle('open');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('open')?'hidden':'';}
+function closeMenu(){document.getElementById('burger').classList.remove('open');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow='';}
+</script>
 </body></html>
