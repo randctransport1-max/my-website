@@ -83,17 +83,7 @@
   @media (max-width: 640px) { nav { display: none; } .burger { display: flex; } }
 
 
-  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;z-index:200;}
-  .burger span{display:block;width:24px;height:2px;background:#f5f0e8;border-radius:2px;transition:all .3s;}
-  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-  .burger.open span:nth-child(2){opacity:0;}
-  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-  .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(20,20,50,.98);backdrop-filter:blur(16px);z-index:99;padding:20px 0 32px;border-bottom:2px solid #b49678;flex-direction:column;}
-  .mobile-menu.open{display:flex;}
-  .mobile-menu a{display:block;padding:14px 32px;font-size:1rem;font-weight:600;color:rgba(245,240,232,.8);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.05);transition:color .2s;}
-  .mobile-menu a:hover{color:#b49678;}
-  .mobile-menu .mobile-line{margin:16px 32px 0;background:#06C755;color:#fff;border-bottom:none;border-radius:8px;text-align:center;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 32px;}
-  @media(max-width:640px){nav{display:none!important;}.burger{display:flex!important;}}
+  
 </style>
 </head>
 <body>
@@ -111,7 +101,6 @@
       LINE応募
     </a>
   </nav>
-  <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </header>
 <div class="mobile-menu" id="mobileMenu">
